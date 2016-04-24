@@ -1,7 +1,7 @@
 {
   "name": "get-post-login",
   "version": "1.0.0",
-  "description": "illustrates basic GET and POST for node server",
+  "description": "illustrates basic GET and POST for Express server with sessions",
   "//": [
     "install nodemon with -g option",
     "https://github.com/remy/nodemon/issues/330"
@@ -22,8 +22,7 @@
   "dependencies": {
     "body-parser": "latest",
     "express": "latest",
-    "express-session": "^1.13.0",
-    "uuid": "^2.0.2"
+    "express-session": "^1.13.0"
   },
   "devDependencies": {}
 }
