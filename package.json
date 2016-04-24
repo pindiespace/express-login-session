@@ -1,0 +1,29 @@
+{
+  "name": "get-post-login",
+  "version": "1.0.0",
+  "description": "illustrates basic GET and POST for node server",
+  "//": [
+    "install nodemon with -g option",
+    "https://github.com/remy/nodemon/issues/330"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "pindiespace",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pindiespace/node-basic-login"
+  },
+  "homepage": "http://plyojump.com/projects/node-basic-login",
+  "dependencies": {
+    "body-parser": "latest",
+    "express": "latest",
+    "express-session": "^1.13.0",
+    "uuid": "^2.0.2"
+  },
+  "devDependencies": {}
+}

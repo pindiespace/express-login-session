@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Basic POST Data via ExpressJS</title>
+    <!--Bootstrap styles-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <!--load jQuery from a CDN-->
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <!--example css-->
+    <link rel="stylesheet" href="styles/styles.css">
+  </head>
+  <body>
+    <header>
+      <h1>Basic POST Data via ExpressJS</h1>
+    <header>
+    <main>
+        <section id="content">
+          <h2 class=" form-signin-heading">Login to Access Members-Only Content</h2>
+          <form id="do-login-form" class="form-signin">
+            <label for="username">Username:</label>
+            <input type="text" id="username" class="form-control" size="40" value="">
+            <label for="password">Password:</label>
+            <input type="password" id="password" class="form-control" size="40" value="">
+            <input type="button" id="do-login-button" class="btn btn-lg btn-primary btn-block" value="Login">
+          </form>
+        </section>
+    </main>
+    <footer>
+      &copy; 2016 Vegan Meat Market.
+    </footer>
+    <!--process login attempts-->
+    <script>
+      $(document).ready(function () {
+        var user, pass;
+
+        function doAjax () {
+            var user = $("#username").val();
+            var pass = $("#password").val();
+            $.ajax({
+            url: "/login",
+            type: "POST",
+            data: {username: user, password: pass},
+            success: function(results){
+                //alert("bad username or password:" + results.username);
+                if(!results.success && results.username) { //ERROR
+                  $("#username").value = results.username; //reset
+                  $("#username").addClass("error").focus();
+                  $("#content h2").html('Error in Username or Password');
+                } else {
+                  /*
+                   * Redirect to members_only.html, which will trigger authentication middleware.
+                   * NOTE: server will just re-send the page if there was an error, despite location.replace()
+                   */
+                  location.replace("/content");
+                }
+            }, //end of success
+          }); //end of $.ajax
+        };
+
+        // Return key triggers Ajax form submission.
+        $("#do-login-form").keydown(function (e) {
+          if(e.keyCode == 10 || e.keyCode == 13) {
+            doAjax();
+          }
+        })
+        // Submit button triggers Ajax form submission.
+        $("#do-login-button").click(doAjax);
+      }); //end of document.ready()
+    </script>
+  </body>
+</html>

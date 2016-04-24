@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Basic POST Data via ExpressJS - Registration</title>
+    <!--Bootstrap styles-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <!--load jQuery from a CDN-->
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <!--example css-->
+    <link rel="stylesheet" href="styles/styles.css">
+    <style>
+    </style>
+    <!--handle login success or failure-->
+  </head>
+  <body>
+    <header>
+      <h1>Basic POST Data via ExpressJS - Registration Page</h1>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/login">Login</a></li>
+        </ul>
+      </nav>
+    <header>
+    <main>
+        <section id="content">
+          <h2>Register to see the Members-Only Content</h2>
+          <form id="do-reg-form">
+            <label for="your-name">Your Name:</label>
+            <input type="text" id="your-name" size="40" value="">
+            <label for="username">Username:</label>
+            <input type="text" id="username" size="40" value="">
+            <label for="password">Password:</label>
+            <input type="text" id="password" size="40" value="">
+            <input type="button" id="do-reg-button" value="Register">
+          </form>
+        </section>
+    </main>
+    <footer>
+      &copy; 2016 Vegan Meat Market.
+    </footer>
+    <script>
+      //since the script doesn't support registration, just disable the form
+      $("input").prop("disabled", true); //Disable
+      $("button").prop("disabled", true); //Disable
+      $("#content h2").html("Registration not available (no database)");
+    </script>
+  </body>
+</html>
